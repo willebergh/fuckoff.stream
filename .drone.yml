@@ -10,7 +10,7 @@ steps:
 - name: build-image
   image: docker
   commands:
-  - docker build
+  - docker build .
 
 trigger:
   branch:
