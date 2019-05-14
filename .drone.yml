@@ -7,15 +7,14 @@ steps:
   commands:
   - npm install
 
-- name: build-image
-  image: docker:dind
-  volumes:
-  - name: dockersock
-  - path: /var/run/docker.sock
-  commands:
-  - docker build .
-
-volumes:
-- name: dockersock
-  host:
-    path: /var/run/docker.sock
+- name: docker  
+  image: plugins/docker
+  settings:
+    repo: willebergh/fuckoff.stream
+    tags:
+    - latest
+    - "1.0"
+    username:
+      from_secret: docker_username
+    password:
+      from_secret: docker_password
