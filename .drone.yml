@@ -1,0 +1,19 @@
+kind: pipeline
+name: willebergh.io
+
+steps:
+- name: build-app
+  image: node
+  commands:
+  - npm install
+
+- name: build-image
+  image: docker
+  commands:
+  - docker build
+
+trigger:
+  branch:
+  - master
+  event:
+  - push
