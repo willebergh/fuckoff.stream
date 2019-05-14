@@ -8,7 +8,7 @@ steps:
   - npm install
 
 - name: build-image
-  image: docker
+  image: docker:dind
   commands:
   - docker build .
 
