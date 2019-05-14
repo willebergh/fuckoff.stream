@@ -9,11 +9,13 @@ steps:
 
 - name: build-image
   image: docker:dind
+  volumes:
+  - name: dockersock
+  - path: /var/run/docker.sock
   commands:
   - docker build .
 
-trigger:
-  branch:
-  - master
-  event:
-  - push
+volumes:
+- name: dockersock
+  host:
+    path: /var/run/docker.sock
