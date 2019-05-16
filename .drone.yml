@@ -2,12 +2,16 @@ kind: pipeline
 name: fuckoff.stream
 
 steps:
-- name: build-app
+- name: Build App
   image: node
   commands:
   - npm install
+  - mkdir build
+  - cp -r public build/public
+  - cp package*.json build
+  - cp server.js build
 
-- name: docker  
+- name: Build & Push Image 
   image: plugins/docker
   settings:
     repo: willebergh/fuckoff.stream
