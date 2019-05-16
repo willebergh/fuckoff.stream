@@ -22,3 +22,15 @@ steps:
       from_secret: docker_username
     password:
       from_secret: docker_password
+
+- name: Discord Notification
+  image: appleboy/drone-discord
+  settings:
+    webhook_id: discord_webhook_id
+    webhook_token: discord_webhook_token
+    message: |
+      {{ build.status }}
+      build {{ build.number }} succeeded. Good job.
+  when:
+    status:
+      - success
