@@ -11,7 +11,7 @@ install:
 
 before_script:
   - mkdir build
-  - cp public build/public
+  - cp -r public build/public
   - cp package*.json build
   - cp server.js build
 
