@@ -1,0 +1,19 @@
+language: node_js
+
+node_js:
+  - "stable"
+
+services:
+  - docker
+
+install:
+  - npm install
+
+before_script:
+  - mkdir build
+  - cp public build/public
+  - cp package*.json build
+  - cp server.js build
+
+script:
+  - docker build -t willebergh/fuckoff.stream:latest .
